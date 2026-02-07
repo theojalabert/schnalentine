@@ -1,0 +1,221 @@
+:root {
+  --captcha-blue: #4a90e2;
+  --valentine-pink: #ff6b81;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+  margin: 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.main-container {
+  position: relative;
+  width: 420px;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Step 1: Checkbox */
+.captcha-box {
+  background: #fff;
+  border: 1px solid #d3d3d3;
+  border-radius: 3px;
+  width: 300px;
+  height: 74px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.08);
+  position: absolute;
+  z-index: 10;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #c1c1c1;
+  border-radius: 2px;
+  margin-right: 12px;
+  cursor: pointer;
+  background: #fff;
+  transition: all 0.2s;
+}
+
+.checkbox:hover {
+  border-color: #b2b2b2;
+}
+
+.checkbox.loading {
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  border-top: 2px solid var(--captcha-blue);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.checkbox-container label {
+  font-size: 14px;
+  color: #000;
+}
+
+.captcha-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 10px;
+  color: #555;
+}
+
+.captcha-logo img {
+  width: 32px;
+  margin-bottom: 2px;
+}
+
+.privacy-links {
+  font-size: 8px;
+  color: #999;
+  margin-top: 2px;
+}
+
+/* Step 2: Modal */
+.captcha-modal {
+  background: #fff;
+  width: 400px;
+  border: 2px solid var(--valentine-pink);
+  box-shadow: 0 0 20px rgba(255, 107, 129, 0.35);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 20;
+  opacity: 0;
+  transform: scale(0.95);
+  animation: popIn 0.3s forwards;
+}
+
+@keyframes popIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-header {
+  background: var(--valentine-pink);
+  color: #fff;
+  padding: 20px 16px;
+  margin-bottom: 8px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.modal-header h1 {
+  margin: 4px 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.modal-header p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-bottom: 8px;
+}
+
+.tile {
+  width: 100%;
+  aspect-ratio: 1;
+  cursor: pointer;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.1s;
+}
+
+.tile:active {
+  transform: scale(0.98);
+}
+
+.tile.selected::after {
+  content: '❤️';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 22px;
+  height: 22px;
+  background: var(--valentine-pink);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #fff;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-top: 1px solid #ececec;
+}
+
+.icons {
+  color: #777;
+  font-size: 18px;
+  letter-spacing: 8px;
+  cursor: not-allowed;
+}
+
+.verify-btn {
+  background: var(--valentine-pink);
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  font-weight: bold;
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  min-width: 110px;
+  min-height: 40px;
+}
+
+.verify-btn:disabled {
+  background: #ccc;
+  cursor: default;
+}

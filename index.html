@@ -1,9 +1,53 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0; url=./schnalentine.html" />
-    <title>Schnalentine</title>
-  </head>
-  <body></body>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security Check</title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <div class="main-container">
+
+    <!-- Step 1: Checkbox -->
+    <div class="captcha-box" id="step-checkbox">
+      <div class="checkbox-container">
+        <div class="checkbox" id="checkbox-btn" aria-label="checkbox"></div>
+        <label>Je ne suis pas un robot</label>
+      </div>
+      <div class="captcha-logo">
+        <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="logo" />
+        <span>reCAPTCHA</span>
+        <div class="privacy-links">Privacy - Terms</div>
+      </div>
+    </div>
+
+    <!-- Step 2: Valentine Grid -->
+    <div class="captcha-modal hidden" id="captcha-modal">
+      <div class="modal-header" id="modal-header">
+        <h3>Sélectionne toutes les images de ton</h3>
+        <h1 id="instruction-text">Schnappito</h1>
+        <p>Clique sur vérifier quand il n'y en a plus.</p>
+      </div>
+
+      <div class="grid-container" id="grid"></div>
+
+      <div class="modal-footer">
+        <div class="icons">
+          <span class="icon-refresh">↺</span>
+          <span class="icon-audio">🎧</span>
+          <span class="icon-info">ⓘ</span>
+        </div>
+        <button class="verify-btn" id="verify-btn" disabled>VÉRIFIER</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>

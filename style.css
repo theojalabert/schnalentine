@@ -1,6 +1,6 @@
 :root {
   --captcha-blue: #4a90e2;
-  --valentine-pink: #ff6b81;
+  --valentine-blue: #77b5fe;
 }
 
 * {
@@ -106,7 +106,7 @@ body {
 .captcha-modal {
   background: #fff;
   width: 400px;
-  border: 2px solid var(--valentine-pink);
+  border: 2px solid var(--valentine-blue);
   box-shadow: 0 0 20px rgba(255, 107, 129, 0.35);
   padding: 8px;
   display: flex;
@@ -126,7 +126,7 @@ body {
 }
 
 .modal-header {
-  background: var(--valentine-pink);
+  background: var(--valentine-blue);
   color: #fff;
   padding: 20px 16px;
   margin-bottom: 8px;
@@ -177,7 +177,7 @@ body {
   left: 5px;
   width: 22px;
   height: 22px;
-  background: var(--valentine-pink);
+  background: var(--valentine-blue);
   color: #fff;
   border-radius: 50%;
   font-size: 12px;
@@ -203,7 +203,7 @@ body {
 }
 
 .verify-btn {
-  background: var(--valentine-pink);
+  background: var(--valentine-blue);
   color: #fff;
   border: none;
   padding: 10px 24px;

@@ -54,8 +54,10 @@ function startValentineRound() {
   }
 }
 
+
 function toggleTile(tile) {
   const index = tile.dataset.index;
+
   if (selectedTiles.has(index)) {
     selectedTiles.delete(index);
     tile.classList.remove('selected');
@@ -65,13 +67,23 @@ function toggleTile(tile) {
   }
 
   verifyBtn.disabled = selectedTiles.size === 0;
+
+  // Effacer le message quand l'utilisateur modifie...
+  captchaError.classList.add('hidden');
+  captchaError.textContent = '';
+
+  // ...et le remettre si le compte n'est pas encore bon.
+  if (selectedTiles.size !== 9) {
+    captchaError.textContent = "Je sais que je suis pas toujours à mon prime, mais il s'agirait de me reconnaître au moins";
+    captchaError.classList.remove('hidden');
+  }
 }
 
 verifyBtn.addEventListener('click', (e) => {
   e.preventDefault();
   if (currentRound !== 2) return;
 
-  // Déclenche l'erreur à CHAQUE clic si les 9 images ne sont pas sélectionnées
+  // Déclenche l'erreur à chaque clic si les 9 images ne sont pas sélectionnées
   if (selectedTiles.size !== 9) {
     captchaError.textContent = "Je sais que je suis pas toujours à mon prime, mais il s'agirait de me reconnaître au moins";
     captchaError.classList.remove('hidden');

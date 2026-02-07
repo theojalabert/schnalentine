@@ -68,24 +68,26 @@ function toggleTile(tile) {
 
   verifyBtn.disabled = selectedTiles.size === 0;
 
-  // Effacer le message quand l'utilisateur modifie...
+  // IMPORTANT: on masque seulement l'erreur pendant modification
+  // (on ne la réaffiche PAS ici)
   captchaError.classList.add('hidden');
   captchaError.textContent = '';
-
-  // ...et le remettre si le compte n'est pas encore bon.
-  if (selectedTiles.size !== 9) {
-    captchaError.textContent = "Je sais que je suis pas toujours à mon prime, mais il s'agirait de me reconnaître au moins";
-    captchaError.classList.remove('hidden');
-  }
 }
 
 verifyBtn.addEventListener('click', (e) => {
   e.preventDefault();
   if (currentRound !== 2) return;
 
-  // Déclenche l'erreur à chaque clic si les 9 images ne sont pas sélectionnées
-  if (selectedTiles.size !== 9) {
+  // L'erreur n'apparaît QUE quand on clique Vérifier avec < 9
+  if (selectedTiles.size < 9) {
     captchaError.textContent = "Je sais que je suis pas toujours à mon prime, mais il s'agirait de me reconnaître au moins";
+    captchaError.classList.remove('hidden');
+    return;
+  }
+
+  // (Sécurité) si >9 impossible ici, mais au cas où
+  if (selectedTiles.size !== 9) {
+    captchaError.textContent = "Sélection invalide.";
     captchaError.classList.remove('hidden');
     return;
   }

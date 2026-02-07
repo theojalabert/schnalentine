@@ -4,50 +4,97 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Security Check</title>
-  <link rel="stylesheet" href="style.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
-    rel="stylesheet"
-  />
+
+  <link rel="stylesheet" href="style.css?v=7" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 </head>
 <body>
-  <div class="main-container">
 
-    <!-- Step 1: Checkbox -->
-    <div class="captcha-box" id="step-checkbox">
-      <div class="checkbox-container">
-        <div class="checkbox" id="checkbox-btn" aria-label="checkbox"></div>
-        <label>Je ne suis pas un robot</label>
-      </div>
-      <div class="captcha-logo">
-        <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="logo" />
-        <span>reCAPTCHA</span>
-        <div class="privacy-links">Privacy - Terms</div>
-      </div>
-    </div>
-
-    <!-- Step 2: Valentine Grid -->
-    <div class="captcha-modal hidden" id="captcha-modal">
-      <div class="modal-header" id="modal-header">
-        <h3>Sélectionne toutes les images de ton</h3>
-        <h1 id="instruction-text">Schnappito</h1>
-        <p>Clique sur vérifier quand il n'y en a plus.</p>
-      </div>
-
-      <div class="grid-container" id="grid"></div>
-
-      <div class="modal-footer">
-        <div class="icons">
-          <span class="icon-refresh">↺</span>
-          <span class="icon-audio">🎧</span>
-          <span class="icon-info">ⓘ</span>
+  <!-- FLOW CAPTCHA -->
+  <section id="captcha-flow">
+    <div class="main-container">
+      <!-- Step 1 -->
+      <div class="captcha-box" id="step-checkbox">
+        <div class="checkbox-container">
+          <div class="checkbox" id="checkbox-btn" aria-label="checkbox"></div>
+          <label>Je ne suis pas un robot</label>
         </div>
-        <button class="verify-btn" id="verify-btn" disabled>VÉRIFIER</button>
+        <div class="captcha-logo">
+          <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="logo" />
+          <span>reCAPTCHA</span>
+          <div class="privacy-links">Privacy - Terms</div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="captcha-modal hidden" id="captcha-modal">
+        <div class="modal-header">
+          <h3>Sélectionne toutes les images de ton</h3>
+          <h1>Schnappito</h1>
+          <p>Clique sur vérifier quand il n'y en a plus.</p>
+        </div>
+
+        <div class="grid-container" id="grid"></div>
+        <p id="captcha-error" class="captcha-error hidden"></p>
+
+        <div class="modal-footer">
+          <div class="icons">
+            <span>↺</span><span>🎧</span><span>ⓘ</span>
+          </div>
+          <button class="verify-btn" id="verify-btn" disabled>VÉRIFIER</button>
+        </div>
       </div>
     </div>
+  </section>
 
-  </div>
+  <!-- SCHNALENTINE (dans la même page, cachée au départ) -->
+  <section id="schnalentine-page" class="hidden">
+    <div class="photo-bg">
+      <img class="photo" src="./images/photo1.jpeg" alt="">
+      <img class="photo" src="./images/photo2.jpeg" alt="">
+      <img class="photo" src="./images/photo3.jpeg" alt="">
+      <img class="photo" src="./images/photo4.jpeg" alt="">
+      <img class="photo" src="./images/photo5.jpeg" alt="">
+      <img class="photo" src="./images/photo6.jpeg" alt="">
+      <img class="photo" src="./images/photo7.jpeg" alt="">
+      <img class="photo" src="./images/photo8.jpeg" alt="">
+      <img class="photo" src="./images/photo9.jpeg" alt="">
+      <img class="photo" src="./images/photo10.jpeg" alt="">
+      <img class="photo" src="./images/photo11.jpeg" alt="">
+      <img class="photo" src="./images/photo12.jpeg" alt="">
+      <img class="photo" src="./images/photo13.jpeg" alt="">
+      <img class="photo" src="./images/photo14.jpeg" alt="">
+      <img class="photo" src="./images/photo15.jpeg" alt="">
+      <img class="photo" src="./images/photo16.jpeg" alt="">
+      <img class="photo" src="./images/photo17.jpeg" alt="">
+      <img class="photo" src="./images/photo18.jpeg" alt="">
+      <img class="photo" src="./images/photo19.jpeg" alt="">
+      <img class="photo" src="./images/photo20.jpeg" alt="">
+      <img class="photo" src="./images/photo21.jpeg" alt="">
+      <img class="photo" src="./images/photo22.jpeg" alt="">
+    </div>
 
-  <script src="script.js"></script>
+    <canvas id="confettiCanvas"></canvas>
+
+    <main class="card">
+      <img class="art" src="./images/schnappi.png" alt="Schnappi">
+      <h1>Schnappi veux-tu être ma Schnalentine ?</h1>
+
+      <section class="button-zone" id="zone">
+        <button id="yesBtn">Oui</button>
+        <button id="noBtn">Non</button>
+      </section>
+
+      <div class="hint" id="hint">Ici, on ne pratique que le “Oui”.<br>Et puis c'est interdit de me dire non.</div>
+
+      <section class="result" id="result">
+        <h2>YOUPI ! 🎉</h2>
+        <img class="fireworks" src="./images/croco.gif" alt="Feux d'artifice" />
+      </section>
+    </main>
+  </section>
+
+  <script src="script.js?v=7"></script>
 </body>
 </html>
